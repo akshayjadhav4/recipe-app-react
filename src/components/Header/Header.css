@@ -1,0 +1,20 @@
+.header_nav {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header__logo {
+  font-family: "Kaushan Script", cursive;
+  font-size: 50px;
+  padding: 5px;
+}
+
+.header__link {
+  color: #000000;
+  text-decoration: none;
+}
