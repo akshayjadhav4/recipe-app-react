@@ -1,0 +1,31 @@
+.home__category {
+  display: flex;
+  justify-content: space-evenly;
+  transition: transform 450ms;
+}
+
+.home_categoryCard {
+  margin: 15px;
+  background-color: white;
+  padding: 10px;
+}
+
+.home_categoryCard > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.home__category :hover {
+  transform: scale(1.03);
+}
+
+.home_categoryCard > h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 990px) {
+  .home__category {
+    flex-direction: column;
+  }
+}
