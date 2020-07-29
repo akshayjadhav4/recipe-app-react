@@ -28,16 +28,19 @@ function SearchBox() {
           <Form className="searchBox__form">
             <Field name="nameOfIngredient">
               {({ field, form }) => {
-                  console.log(form);
+                // console.log(form);
                 return (
                   <>
-                  <input
-                    type="text"
-                    {...field}
-                    className="searchBox__formInput"
-                    placeholder="Search recipes by name ,ingredient ,etc."
-                  />
-                  <ErrorMessage name="nameOfIngredient" component={TextError}/>
+                    <input
+                      type="text"
+                      {...field}
+                      className="searchBox__formInput"
+                      placeholder="Search recipes by name ,ingredient ,etc."
+                    />
+                    <ErrorMessage
+                      name="nameOfIngredient"
+                      component={TextError}
+                    />
                   </>
                 );
               }}
