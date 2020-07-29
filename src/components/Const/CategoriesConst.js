@@ -95,6 +95,55 @@ const categoryWheatFree = {
   category: "Wheat-free",
   description: "No wheat, can have gluten though",
 };
+
+const categoryBalanced = {
+  data: "balanced",
+  image:
+    "https://cdn.pixabay.com/photo/2018/03/28/20/32/food-3270461_960_720.jpg",
+  category: "Balanced ",
+  description: "Protein/Fat/Carb values in 15/35/50 ratio",
+};
+
+const categoryHighProtein = {
+  data: "high-protein",
+  image:
+    "https://images.pexels.com/photos/135755/pexels-photo-135755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  category: "High-Protein ",
+  description: "More than 50% of total calories from proteins",
+};
+
+const categoryLowCarb = {
+  data: "low-carb",
+  image:
+    "https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  category: "Low-Carb",
+  description: "Less than 20% of total calories from carbs",
+};
+
+const categoryLowFat = {
+  data: "low-fat",
+  image:
+    "https://cdn.pixabay.com/photo/2017/05/17/17/48/picnic-2321445_960_720.jpg",
+  category: "Low-Fat ",
+  description: "Less than 15% of total calories from fat",
+};
+
+const categoryHighFiber = {
+  data: "high-fiber",
+  image:
+    "https://images.pexels.com/photos/4397754/pexels-photo-4397754.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  category: "High-Fiber",
+  description: "More than 5g fiber per serving",
+};
+
+const categoryLowSodium = {
+  data: "low-sodium",
+  image:
+    "https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  category: "Low-Sodium",
+  description: "Less than 140mg Na per serving",
+};
+
 export const categories = [
   {
     title: "Meals for the day",
@@ -116,14 +165,16 @@ export const categories = [
       categoryWheatFree,
     ],
   },
-  // {
-  //   title: "Diet meals",
-  //   key: "dietLabels",
-  //   items: [
-  //     "categoryBalanced",
-  //     " categoryHighProtein",
-  //     "categoryLowCarb",
-  //     "categoryLowFat",
-  //   ],
-  // },
+  {
+    title: "Diet Meals",
+    key: "dietLabels",
+    items: [
+      categoryBalanced,
+      categoryHighFiber,
+      categoryHighProtein,
+      categoryLowCarb,
+      categoryLowFat,
+      categoryLowSodium,
+    ],
+  },
 ];
