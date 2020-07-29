@@ -60,14 +60,11 @@ function Home() {
               Diet Meals
             </button>
 
-            <Link to="/recipes/time=5-10">
-              <button
-                onClick={(e) => {}}
-                className={` home__categoryMenuButton`}
-              >
+            <button onClick={(e) => {}} className={` home__categoryMenuButton`}>
+              <Link to="/recipes/time=5-10" className="home__link">
                 Last Minute
-              </button>
-            </Link>
+              </Link>
+            </button>
           </div>
           {data}
         </Container>

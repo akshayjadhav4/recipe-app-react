@@ -13,6 +13,7 @@
 }
 .home__link {
   text-decoration: none;
+  color: black;
 }
 .home_categoryCard {
   margin: 15px;
