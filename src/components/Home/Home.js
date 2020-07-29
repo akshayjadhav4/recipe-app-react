@@ -3,6 +3,7 @@ import BaseLayout from "../BaseLayout/BaseLayout";
 import { categories } from "../Const/CategoriesConst";
 import { Typography, Container, Paper } from "@material-ui/core";
 import "./Home.css";
+import { Link } from "react-router-dom";
 function Home() {
   const [type, setType] = useState("mealtype");
   const data = categories
@@ -16,11 +17,13 @@ function Home() {
           {category.items.map((a, index) => {
             // console.log(a);
             return (
-              <Paper className="home_categoryCard">
-                <img src={a.image} alt={a.category} />
-                <h2>{a.category}</h2>
-                {a.description && <p>{a.description}</p>}
-              </Paper>
+              <Link to={`/recipes/${a.data}`} className="home__link">
+                <Paper className="home_categoryCard">
+                  <img src={a.image} alt={a.category} />
+                  <h2>{a.category}</h2>
+                  {a.description && <p>{a.description}</p>}
+                </Paper>
+              </Link>
             );
           })}
         </div>
@@ -48,6 +51,23 @@ function Home() {
             >
               Health Based
             </button>
+            <button
+              onClick={(e) => setType("dietLabels")}
+              className={` home__categoryMenuButton ${
+                type === "dietLabels" && "home__categoryMenuButton--selected"
+              }`}
+            >
+              Diet Meals
+            </button>
+
+            <Link to="/recipes/time=5-10">
+              <button
+                onClick={(e) => {}}
+                className={` home__categoryMenuButton`}
+              >
+                Last Minute
+              </button>
+            </Link>
           </div>
           {data}
         </Container>
