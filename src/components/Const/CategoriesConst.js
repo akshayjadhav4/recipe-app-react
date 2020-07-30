@@ -43,7 +43,7 @@ const categoryVegeterian = {
 };
 
 const categorySugarConscious = {
-  data: "lowSugar",
+  data: "low-sugar",
   image:
     "https://cdn.pixabay.com/photo/2017/11/11/20/59/food-2940463_960_720.jpg",
   category: "Sugar-conscious",
