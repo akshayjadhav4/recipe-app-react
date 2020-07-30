@@ -3,7 +3,11 @@ import "./SearchBox.css";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextError from "../ErrorComponent/TextError";
+import { useHistory } from "react-router-dom";
+
 function SearchBox() {
+  const history = useHistory();
+
   const initialValues = {
     nameOfIngredient: "",
   };
@@ -12,8 +16,9 @@ function SearchBox() {
     nameOfIngredient: Yup.string().required("Required"),
   });
   const onSubmit = (values, onSubmitProps) => {
-    alert(values.nameOfIngredient);
+    // alert(values.nameOfIngredient);
     // onSubmitProps.setSubmitting(false);
+    history.push(`/recipes/${values.nameOfIngredient}`);
     onSubmitProps.resetForm();
   };
 
