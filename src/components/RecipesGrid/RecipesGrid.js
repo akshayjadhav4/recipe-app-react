@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import BaseLayout from "../BaseLayout/BaseLayout";
 import "./RecipesGrid.css";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -16,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
   },
   media: {
-    height: 140,
+    height: 200,
+    width: "100%",
     objectFit: "contain",
   },
   fullHeightCard: {
@@ -26,15 +29,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecipesGrid({ match }) {
   const classes = useStyles();
+  const history = useHistory();
   const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState("");
   const APP_ID = process.env.REACT_APP_APP_ID;
   const APP_KEY = process.env.REACT_APP_APP_KEY;
   const FETCH_URL = `https://api.edamam.com/search?q=${match.params.type}&app_id=${APP_ID}&app_key=${APP_KEY}`;
   useEffect(() => {
     async function fetchRecipes() {
-      const request = await axios.get(FETCH_URL);
-      console.log(request.data.hits);
-      setRecipes(request.data.hits);
+      const request = await axios
+        .get(FETCH_URL)
+        .then((response) => setRecipes(response.data.hits))
+        .catch((error) => setError("Problem with Server..."));
+
       return request;
     }
     fetchRecipes();
@@ -51,53 +58,67 @@ export default function RecipesGrid({ match }) {
         <br />
         <br />
         <Grid container spacing={3}>
-          {recipes.map((recipe, index) => {
-            return (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card className={(classes.root, classes.fullHeightCard)}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={recipe.recipe.image}
-                      title={recipe.recipe.label}
-                    />
-                    <CardContent>
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        component="h2"
-                        align="center"
-                      >
-                        {recipe.recipe.label}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                        align="center"
-                      >
-                        By {recipe.recipe.source}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        color="textSecondary"
-                        component="h6"
-                      >
-                        Calories : {Math.round(recipe.recipe.calories)} kcal
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        color="textSecondary"
-                        component="h6"
-                      >
-                        Number of servings : {recipe.recipe.yield}{" "}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            );
-          })}
+          {error ? (
+            <Typography align="center" variant="h3">
+              {error}
+            </Typography>
+          ) : (
+            recipes.map((recipe, index) => {
+              return (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Card
+                    className={(classes.root, classes.fullHeightCard)}
+                    onClick={() => {
+                      history.push({
+                        pathname: "/viewRecipe",
+                        state: recipe,
+                      });
+                    }}
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={recipe.recipe.image}
+                        title={recipe.recipe.label}
+                      />
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="h2"
+                          align="center"
+                        >
+                          {recipe.recipe.label}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          component="p"
+                          align="center"
+                        >
+                          By {recipe.recipe.source}
+                        </Typography>
+                        <Typography
+                          variant="h6"
+                          color="textSecondary"
+                          component="h6"
+                        >
+                          Calories : {Math.round(recipe.recipe.calories)} kcal
+                        </Typography>
+                        <Typography
+                          variant="h6"
+                          color="textSecondary"
+                          component="h6"
+                        >
+                          Number of servings : {recipe.recipe.yield}{" "}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              );
+            })
+          )}
         </Grid>
       </BaseLayout>
     </div>
