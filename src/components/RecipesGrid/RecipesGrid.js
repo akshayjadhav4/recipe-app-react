@@ -63,14 +63,14 @@ export default function RecipesGrid({ match }) {
     if (values.dietFilter.length > 0) {
       values.dietFilter.map((filter) => {
         searchParams.append("diet", filter);
-        console.log(filter);
+        // console.log(filter);
       });
     }
 
     if (values.helthFilter.length > 0) {
       values.helthFilter.map((filter) => {
         searchParams.append("health", filter);
-        console.log(filter);
+        // console.log(filter);
       });
     }
     const URL = `https://api.edamam.com/search?q=${
