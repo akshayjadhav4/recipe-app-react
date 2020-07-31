@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Header/Header";
 import { Typography, Grid, Container } from "@material-ui/core";
 import "./RecipeView.css";
@@ -6,7 +6,10 @@ import IngredientsCard from "../IngredientsCard/IngredientsCard";
 import NutrientsTabel from "../NutrientsTabel/NutrientsTabel";
 
 function RecipeView({ location }) {
-  console.log(location.state);
+  // console.log(location.state);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const { recipe } = location.state;
   return (
