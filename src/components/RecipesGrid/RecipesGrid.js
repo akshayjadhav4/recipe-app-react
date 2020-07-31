@@ -43,6 +43,7 @@ export default function RecipesGrid({ match }) {
   const history = useHistory();
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState("");
+  const [reset, setReset] = useState(false);
   const APP_ID = process.env.REACT_APP_APP_ID;
   const APP_KEY = process.env.REACT_APP_APP_KEY;
   const FETCH_URL = `https://api.edamam.com/search?q=${match.params.type}&app_id=${APP_ID}&app_key=${APP_KEY}`;
@@ -56,7 +57,7 @@ export default function RecipesGrid({ match }) {
       return request;
     }
     fetchRecipes();
-  }, [FETCH_URL]);
+  }, [FETCH_URL, reset]);
 
   const onSubmit = async (values, onSubmitProps) => {
     const searchParams = new URLSearchParams();
@@ -119,14 +120,33 @@ export default function RecipesGrid({ match }) {
                   name="helthFilter"
                   options={healthCheckboxOptions}
                 />
-                <Button
-                  type="submit"
-                  size="small"
-                  variant="contained"
-                  color="primary"
+                <Grid
+                  justify="space-between" // Add it here :)
+                  container
+                  spacing={20}
                 >
-                  Submit
-                </Button>
+                  <Grid item>
+                    <Button
+                      type="reset"
+                      size="small"
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => setReset(true)}
+                    >
+                      Clear Filter
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      type="submit"
+                      size="small"
+                      variant="contained"
+                      color="primary"
+                    >
+                      Submit
+                    </Button>
+                  </Grid>
+                </Grid>
               </Form>
             )}
           </Formik>
