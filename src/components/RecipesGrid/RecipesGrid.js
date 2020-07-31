@@ -61,17 +61,11 @@ export default function RecipesGrid({ match }) {
   const onSubmit = async (values, onSubmitProps) => {
     const searchParams = new URLSearchParams();
     if (values.dietFilter.length > 0) {
-      values.dietFilter.map((filter) => {
-        searchParams.append("diet", filter);
-        // console.log(filter);
-      });
+      values.dietFilter.map((filter) => searchParams.append("diet", filter));
     }
 
     if (values.helthFilter.length > 0) {
-      values.helthFilter.map((filter) => {
-        searchParams.append("health", filter);
-        // console.log(filter);
-      });
+      values.helthFilter.map((filter) => searchParams.append("health", filter));
     }
     const URL = `https://api.edamam.com/search?q=${
       match.params.type

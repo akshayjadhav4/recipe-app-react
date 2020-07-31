@@ -15,7 +15,7 @@ function NutrientsTabel({ data }) {
   const classes = useStyles();
 
   return (
-    <div className="nutrientsTabel" className={classes.table}>
+    <div className={` nutrientsTabel ${classes.table}`}>
       {Object.entries(data).map((nutrient, index) => {
         const { label, quantity, unit } = nutrient[1];
         return (

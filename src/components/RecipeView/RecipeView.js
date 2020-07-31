@@ -94,13 +94,20 @@ function RecipeView({ location }) {
                 you can read full recipe prepration instruction on recipe source{" "}
                 <strong>{recipe.source}</strong>
                 <br />
-                <a
+                {/* <a
                   href={recipe.url}
                   target="_blank"
                   className="recipeView__recipeUrl"
                 >
                   Full Recipe Instruction
-                </a>
+                </a> */}
+                <button
+                  className="recipeView__recipeUrl"
+                  onClick={() => window.open(recipe.url, "_blank")}
+                >
+                  {" "}
+                  Full Recipe Instruction
+                </button>
               </Typography>
             </Grid>
           </Grid>
