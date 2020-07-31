@@ -1,0 +1,21 @@
+.filter {
+  margin-bottom: 10px;
+}
+.filter__dietCheckbox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 990px) {
+  .filter__dietCheckbox {
+    flex-direction: column;
+  }
+  .filter__healthCheckbox {
+    flex-direction: column;
+  }
+}
+
+.filter__healthCheckbox {
+  display: flex;
+  justify-content: space-evenly;
+}
